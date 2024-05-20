@@ -1,13 +1,13 @@
 <script>
-  export let data;
+  export let data
 
-  let stops = data?.stops || [];
-  let status = data?.status || null;
+  let stops = data?.stops || []
+  let status = data?.status || null
 
-  let USE_FAKE = data?.USE_FAKE || false;
+  let USE_FAKE = data?.USE_FAKE || false
 
   function determine_class_from_type(type) {
-    return type === 0 ? 'train' : type === 1 ? 'tram' : type === 2 ? 'bus' : '';
+    return type === 0 ? 'train' : type === 1 ? 'tram' : type === 2 ? 'bus' : ''
   }
 
   function has_estimated_time(departure) {
@@ -21,9 +21,6 @@
   <h1>Nearby</h1>
   <div class="main">
     <table>
-    {#if !USE_FAKE }
-      {JSON.stringify(data)}
-    {/if}
     {#each stops as stop}
       <p>{stop.stop_name} ({Math.round(stop.stop_distance)}m)</p>
       {#each stop.routes as route, i}
